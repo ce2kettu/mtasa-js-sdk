@@ -1,4 +1,4 @@
-import { InvalidArgumentException } from '../error';
+import { InvalidArgumentException } from '../exceptions';
 import { validateIPAddress } from '../util';
 
 export class Server {
@@ -14,15 +14,15 @@ export class Server {
         this.httpPort = httpPort;
     }
 
-    get getHost(): string {
+    public getHost(): string {
         return this.host;
     }
 
-    get getPort(): number {
+    public getPort(): number {
         return this.httpPort;
     }
 
-    get getEndPoint(): string {
+    public getEndPoint(): string {
         return `${this.host}:${this.httpPort}`;
     }
 }
