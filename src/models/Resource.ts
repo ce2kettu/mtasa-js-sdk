@@ -1,20 +1,33 @@
+import { MtaService } from '../services';
+
 export class Resource {
     private name: string;
-    public static SERVER_PREFIX = "^R^";
+    private mtaService?: MtaService;
+    public static readonly SERVER_PREFIX: string = '^R^';
 
-    constructor() {
-
+    constructor(name: string, mtaService?: MtaService) {
+        this.name = name;
+        this.mtaService = mtaService;
     }
 
-    get getName(): string {
+    public static fromServer(value: string): Resource {
+        const name = value.substring(0, 3);
+        return new Resource(name);
+    }
+
+    public getName(): string {
         return this.name;
     }
 
-    call(func: string, ...args: any[]) {
-        
+    public call(func: string, ...args: any[]) {
+        if (!this.mtaService) {
+            throw new Error(`Resource ${this.name} can not be called because Mta service is not defined`);
+        }
+
+        return this.mtaService?.callFunction(this.name, func, args);
     }
 
-    jsonSerialize(): string {
+    public stringify(): string {
         return Resource.SERVER_PREFIX + this.name;
     }
 }
