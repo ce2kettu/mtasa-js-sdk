@@ -1,10 +1,27 @@
+import { ElementFactory } from '../factories';
+
 export class ElementTransformer {
 
-    static fromServer() {
+    public static fromServer(dataFromServer?: string) {
+        if (!dataFromServer) {
+            return null;
+        }
 
+        const data = JSON.parse(dataFromServer);
+        return this.stringValuesToObjects(data);
     }
 
-    static toServer() {
-        
+    public static toServer(inputData: any[]): string {
+        return JSON.stringify(inputData);
+    }
+
+    public static stringValuesToObjects(value: any): any {
+        if (Array.isArray(value)) {
+            value = value.map(v => this.stringValuesToObjects(v));
+        } else if (typeof value === 'string') {
+            value = ElementFactory.fromServer(value);
+        }
+
+        return value;
     }
 }
