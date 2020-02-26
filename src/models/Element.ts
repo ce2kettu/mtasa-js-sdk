@@ -7,7 +7,7 @@ export class Element {
     }
 
     public static fromServer(value: string): Element {
-        const id = value.substring(0, 3);
+        const id = value.substr(3);
         return new Element(id);
     }
 

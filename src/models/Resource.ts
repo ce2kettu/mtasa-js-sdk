@@ -11,7 +11,7 @@ export class Resource {
     }
 
     public static fromServer(value: string): Resource {
-        const name = value.substring(0, 3);
+        const name = value.substr(3);
         return new Resource(name);
     }
 

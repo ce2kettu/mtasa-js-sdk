@@ -1,5 +1,5 @@
 import { InvalidArgumentException } from '../exceptions';
-import { validateIPAddress } from '../util';
+import { validateIPAddress } from '../utils';
 
 export class Server {
     private host: string;

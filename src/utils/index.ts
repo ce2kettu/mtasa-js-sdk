@@ -4,3 +4,7 @@ export function validateIPAddress(ipAddress: string) {
     }
     return false;
 }
+
+export function basicAuthorization(username: string, password: string) {
+    return Buffer.from(`${username}:${password}`).toString('base64');
+}
