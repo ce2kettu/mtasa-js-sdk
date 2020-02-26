@@ -7,11 +7,11 @@ export class Authentication {
         this.password = password;
     }
 
-    get getUser(): string {
+    public getUser(): string {
         return this.user;
     }
 
-    get getPassword(): string {
+    public getPassword(): string {
         return this.password;
     }
 }

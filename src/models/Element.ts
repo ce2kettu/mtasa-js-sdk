@@ -1,21 +1,21 @@
 export class Element {
     private id: string;
-    public static SERVER_PREFIX = "^E^";
+    public static readonly SERVER_PREFIX: string = '^E^';
 
     constructor(id: string) {
         this.id = id;
     }
 
-    static fromServer(value: string): Element {
-        const id = value.substr(0, 3);
+    public static fromServer(value: string): Element {
+        const id = value.substring(0, 3);
         return new Element(id);
     }
 
-    get getId(): string {
+    public getId(): string {
         return this.id;
     }
 
-    jsonSerialize(): string {
+    public stringify(): string {
         return Element.SERVER_PREFIX + this.id;
     }
 }
