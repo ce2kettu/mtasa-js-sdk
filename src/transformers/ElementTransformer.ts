@@ -2,7 +2,7 @@ import { ElementFactory } from '../factories';
 
 export class ElementTransformer {
 
-    public static fromServer(dataFromServer?: string) {
+    public static fromServer(dataFromServer?: string): any {
         if (!dataFromServer) {
             return null;
         }

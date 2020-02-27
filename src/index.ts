@@ -1,8 +1,9 @@
 import { Authentication, Resource as MtaResource, Resources, Server } from './models';
 import { MtaService } from './services';
+import { ElementTransformer } from './transformers';
 
 
-class Mta {
+export class Mta {
     private mtaService: MtaService;
     private resources: Resources;
 
@@ -27,20 +28,14 @@ class Mta {
     }
 
     public getInput() {
-
+        
     }
 
-    public doReturn() {
-
+    public doReturn(...args: any[]) {
+        return ElementTransformer.toServer(args);
     }
 
 }
-
-const server = new Server('***REMOVED***', ***REMOVED***);
-const auth = new Authentication('***REMOVED***', '***REMOVED***');
-const mta = new Mta(server, auth);
-const response = mta.getResource('***REMOVED***').call('***REMOVED***');
-//console.log(response);
 
 // const server = new Server('127.0.0.1', 22005);
 // const auth = new Authentication('myUser', 'myPassword');

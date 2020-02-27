@@ -29,7 +29,7 @@ export class MtaService {
         .then(txt => {
             console.log('text: ' + txt);
             const a = ElementTransformer.fromServer(txt);
-            //console.log(a);
+            console.log(a);
         });
     }
 
